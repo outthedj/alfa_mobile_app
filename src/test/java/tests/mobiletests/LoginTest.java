@@ -24,7 +24,7 @@ public class LoginTest {
     public void loginTest() throws InterruptedException {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.loginToAccount();
-        Thread.sleep(5000);
+//        Thread.sleep(5000);
         SuccessLoginPage successLoginPage = new SuccessLoginPage(driver);
 
         Assert.assertTrue(successLoginPage.isSuccessMessageShown());
