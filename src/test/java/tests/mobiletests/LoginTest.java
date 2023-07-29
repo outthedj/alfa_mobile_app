@@ -6,8 +6,8 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.mobilepage.LoginPage;
-import pages.mobilepage.SuccessLoginPage;
+import mobilePages.loginPage.LoginPage;
+import mobilePages.successLoginPage.SuccessLoginPage;
 
 import java.net.MalformedURLException;
 
@@ -23,17 +23,16 @@ public class LoginTest {
     @Test
     public void loginTest() throws InterruptedException {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.loginToAccount();
-//        Thread.sleep(5000);
+        loginPage
+                .inputUsername() //Chain of Invocations
+                .inputPassword()  //Chain of Invocations
+                .clickConfirmButton();  //Chain of Invocations
         SuccessLoginPage successLoginPage = new SuccessLoginPage(driver);
-
         Assert.assertTrue(successLoginPage.isSuccessMessageShown());
-//        successLoginPage.getText();
     }
 
     @AfterMethod
     public void tearDown() {
         driver.quit();
     }
-
 }
