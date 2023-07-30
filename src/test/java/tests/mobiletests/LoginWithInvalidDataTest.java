@@ -5,11 +5,13 @@ import io.appium.java_client.android.AndroidDriver;
 import mobilePages.loginPage.LoginFields;
 import mobilePages.loginPage.LoginPage;
 import mobilePages.successLoginPage.SuccessLoginPage;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import utilities.RegexpCompareUtil;
 
 import java.net.MalformedURLException;
 import java.util.Arrays;
@@ -40,21 +42,33 @@ public class LoginWithInvalidDataTest {
 //        );
 //    }
 
+//    @DataProvider(name = "createNegativeData")
+//    private Object[][] getCreatedNegativeData() {
+//        List<String> logins = Arrays.asList("", "123456789", generateStringOfLength(51), "!&$%?*()+=@#><}{[]");
+//        List<String> passwords = Arrays.asList("", " ", generateStringOfLength(51));
+//        return new Object[][]{
+//                {new HashMap<>() {{
+//                    put(LOGIN_FIELD, logins.get(new Random().nextInt(logins.size())));
+//                    put(PASSWORD_FIELD, generateStringOfLength(50));
+//                }}, LOGIN_FIELD
+//                },
+//                {new HashMap<>() {{
+//                    put(LOGIN_FIELD, generateStringOfLength(50));
+//                    put(PASSWORD_FIELD, passwords.get(new Random().nextInt(passwords.size())));
+//                }}, PASSWORD_FIELD
+//                }
+//        };
+//    }
+
     @DataProvider(name = "createNegativeData")
     private Object[][] getCreatedNegativeData() {
         List<String> logins = Arrays.asList("", "123456789", generateStringOfLength(51), "!&$%?*()+=@#><}{[]");
         List<String> passwords = Arrays.asList("", " ", generateStringOfLength(51));
         return new Object[][]{
-                {new HashMap<>() {{
-                    put(LOGIN_FIELD, logins.get(new Random().nextInt(logins.size())));
-                    put(PASSWORD_FIELD, generateStringOfLength(50));
-                }}, LOGIN_FIELD
-                },
-                {new HashMap<>() {{
-                    put(LOGIN_FIELD, generateStringOfLength(50));
-                    put(PASSWORD_FIELD, passwords.get(new Random().nextInt(passwords.size())));
-                }}, PASSWORD_FIELD
-                }
+                {"", ""},
+                {"Login", ""},
+                {"", "Password"},
+                {"Login", ""},
         };
     }
 

@@ -4,7 +4,8 @@ import org.openqa.selenium.By;
 
 public enum LoginErrorMessages {
 
-    ERROR_MESSAGE(By.xpath("//*[contains(@resource-id, 'tvError')]"));
+    ERROR_WRONG_CREDENTIALS(By.xpath("//*[contains(@resource-id, 'tvError')]")),
+    ERROR_VALIDATION_FAILED(By.xpath("//*[contains(@resource-id, 'tvError')]"));
 
     private final By fieldPath;
 
