@@ -3,6 +3,9 @@ package mobilePages.loginPage;
 import elements.Button;
 import elements.Input;
 import io.appium.java_client.android.AndroidDriver;
+import org.openqa.selenium.By;
+
+import static mobilePages.loginPage.LoginFields.LOGIN_FIELD;
 
 public class LoginPage {
 
@@ -27,14 +30,14 @@ public class LoginPage {
     public LoginPage(AndroidDriver driver) {
         this.driver = driver;
     }
-    public LoginPage inputUsername() {
-        new Input(driver, "etUsername").inputText("Login"); // Изпользуем обертку
+    public LoginPage inputUsername(String text) {
+        new Input(driver, "etUsername").inputText(text); // Изпользуем обертку
 //        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions. visibilityOfElementLocated(LOGIN_FIELD.getFieldPath())).sendKeys("Login"); // Реализация без оберток
         return new LoginPage(driver); //Chain of Invocations
     }
 
-    public LoginPage inputPassword() {
-        new Input(driver, "etPassword").inputText("Password"); // Изпользуем обертку
+    public LoginPage inputPassword(String text) {
+        new Input(driver, "etPassword").inputText(text); // Изпользуем обертку
 //        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions. visibilityOfElementLocated(PASSWORD_FIELD.getFieldPath())).sendKeys("Password"); // Реализация без оберток
         return new LoginPage(driver); //Chain of Invocations
     }
@@ -43,6 +46,15 @@ public class LoginPage {
         new Button(driver, "btnConfirm").clickButton(); // Изпользуем обертку
 //        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions. visibilityOfElementLocated(SUBMIT_BUTTON.getFieldPath())).click(); // Реализация без оберток
         return new LoginPage(driver); //Chain of Invocations
+    }
+
+    public LoginPage changePasswordState() {
+        driver.findElement(By.className("android.widget.ImageButton")).click();
+        return new LoginPage(driver);
+    }
+
+    public boolean isPasswordVisible(String text) {
+        return driver.findElement(LOGIN_FIELD.getFieldPath()).getAttribute("password").equals("false");
     }
 
 //    public LoginPage loginToAccount() {

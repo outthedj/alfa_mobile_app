@@ -31,14 +31,14 @@ public class LoginWithInvalidDataTest {
         driver = new AndroidDriverManager().createDriver();
     }
 
-    @Test(dataProvider = "createNegativeData")
-    public void loginWithInvalidDataTest(HashMap<LoginFields, ?> data, LoginFields field) {
-        LoginPage loginPage = new LoginPage(driver);
-        data.keySet().forEach(key ->
-//                loginPage.inputUsername(key, data.get(key).toString())
-                driver.findElement()
-        );
-    }
+//    @Test(dataProvider = "createNegativeData")
+//    public void loginWithInvalidDataTest(HashMap<LoginFields, ?> data, LoginFields field) {
+//        LoginPage loginPage = new LoginPage(driver);
+//        data.keySet().forEach(key ->
+////                loginPage.inputUsername(key, data.get(key).toString())
+//                driver.findElement()
+//        );
+//    }
 
     @DataProvider(name = "createNegativeData")
     private Object[][] getCreatedNegativeData() {
