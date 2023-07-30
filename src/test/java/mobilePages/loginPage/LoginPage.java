@@ -4,8 +4,13 @@ import elements.Button;
 import elements.Input;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static mobilePages.loginPage.LoginFields.LOGIN_FIELD;
+import java.time.Duration;
+
+import static mobilePages.loginPage.LoginErrorMessages.ERROR_VALIDATION_FAILED;
+import static mobilePages.loginPage.LoginFields.PASSWORD_FIELD;
 
 public class LoginPage {
 
@@ -53,8 +58,19 @@ public class LoginPage {
         return new LoginPage(driver);
     }
 
-    public boolean isPasswordVisible(String text) {
-        return driver.findElement(LOGIN_FIELD.getFieldPath()).getAttribute("password").equals("false");
+    public String isPasswordHidden() {
+        return driver.findElement(PASSWORD_FIELD.getFieldPath()).getAttribute("password");
+    }
+
+    public boolean isErrorMessageVisible() {
+        return driver.findElement(ERROR_VALIDATION_FAILED.getFieldPath()).getAttribute("text").equals("Введены неверные данные");
+    }
+
+    public LoginPage isElementLoaded(By locator, String text) {
+//        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.textToBe(locator, text));
+        return this;
     }
 
 //    public LoginPage loginToAccount() {

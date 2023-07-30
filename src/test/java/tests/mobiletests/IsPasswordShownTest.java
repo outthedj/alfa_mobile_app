@@ -20,15 +20,15 @@ public class IsPasswordShownTest {
     }
 
     @Test
-    public void loginTest() {
+    public void isPasswordShownTest() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage
                 .inputPassword("Password")  //Chain of Invocations
                 .changePasswordState();
-        Assert.assertTrue(loginPage.isPasswordVisible("false"));
+        Assert.assertEquals(loginPage.isPasswordHidden(), "false");
         loginPage
                 .changePasswordState();
-        Assert.assertTrue(loginPage.isPasswordVisible("true"));
+        Assert.assertEquals(loginPage.isPasswordHidden(), "true");
     }
 
     @AfterMethod
