@@ -21,7 +21,7 @@ public class LoginTest {
     }
 
     @Test
-    public void loginTest() throws InterruptedException {
+    public void loginTest() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage
                 .inputUsername("Login") //Chain of Invocations

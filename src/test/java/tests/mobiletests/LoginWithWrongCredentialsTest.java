@@ -12,7 +12,6 @@ import utilities.GenerateRandomValue;
 
 import java.net.MalformedURLException;
 
-import static mobilePages.loginPage.LoginErrorMessages.ERROR_VALIDATION_FAILED;
 import static mobilePages.loginPage.LoginErrorMessages.ERROR_WRONG_CREDENTIALS;
 
 public class LoginWithWrongCredentialsTest {
@@ -37,8 +36,6 @@ public class LoginWithWrongCredentialsTest {
 
     @DataProvider(name = "createEmptyData")
     private Object[][] getCreatedNegativeData() {
-//        List<String> logins = Arrays.asList("", "123456789", generateStringOfLength(51), "!&$%?*()+=@#><}{[]");
-//        List<String> passwords = Arrays.asList("", " ", generateStringOfLength(51));
         return new Object[][]{
                 {GenerateRandomValue.getRandomLogin(10), "Password"},
                 {"Login",GenerateRandomValue.getRandomPassword(10)}

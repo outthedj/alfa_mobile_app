@@ -11,9 +11,6 @@ import org.testng.annotations.Test;
 
 import java.net.MalformedURLException;
 
-import static utilities.GenerateFakeMessage.generateDate;
-import static utilities.GenerateFakeMessage.generateStringOfLength;
-
 public class LoginWithEmptyCredentialsTest {
 
     AndroidDriver driver;
@@ -35,8 +32,6 @@ public class LoginWithEmptyCredentialsTest {
 
     @DataProvider(name = "createEmptyData")
     private Object[][] getCreatedNegativeData() {
-//        List<String> logins = Arrays.asList("", "123456789", generateStringOfLength(51), "!&$%?*()+=@#><}{[]");
-//        List<String> passwords = Arrays.asList("", " ", generateStringOfLength(51));
         return new Object[][]{
                 {"", ""},
                 {"Login", ""},

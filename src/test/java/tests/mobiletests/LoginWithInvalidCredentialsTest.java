@@ -8,7 +8,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import utilities.GenerateRandomValue;
 
 import java.net.MalformedURLException;
 
@@ -37,8 +36,6 @@ public class LoginWithInvalidCredentialsTest {
 
     @DataProvider(name = "createInvalidData")
     private Object[][] getCreatedNegativeData() {
-//        List<String> logins = Arrays.asList("", "123456789", generateStringOfLength(51), "!&$%?*()+=@#><}{[]");
-//        List<String> passwords = Arrays.asList("", " ", generateStringOfLength(51));
         return new Object[][]{
                 {"123456789","Password"},
                 {generateStringOfLength(51),"Password"},

@@ -1,12 +1,14 @@
 package mobilePages.successLoginPage;
 
 import io.appium.java_client.android.AndroidDriver;
+import lombok.extern.log4j.Log4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+@Log4j
 public class SuccessLoginPage {
 
     AndroidDriver driver;
@@ -17,6 +19,7 @@ public class SuccessLoginPage {
     }
 
     public boolean isSuccessMessageShown() {
+        log.info("Checking is success message shown");
 //    return driver.findElement(SUCCESS_TEXT).getAttribute("text").equals("Вход в Alfa-Test выполнен");
 //        return new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions. visibilityOfElementLocated(SUCCESS_TEXT)).getAttribute("text").equals("Вход в Alfa-Test выполнен");
       return new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.attributeContains(SUCCESS_TEXT, "text", "Вход в Alfa-Test выполнен"));
