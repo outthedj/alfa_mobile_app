@@ -2,16 +2,15 @@ package tests.mobiletests;
 
 import driver.mobiledriver.AndroidDriverManager;
 import io.appium.java_client.android.AndroidDriver;
+import mobilePages.loginPage.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import mobilePages.loginPage.LoginPage;
-import mobilePages.successLoginPage.SuccessLoginPage;
 
 import java.net.MalformedURLException;
 
-public class LoginTest {
+public class IsPasswordShownTest {
 
     AndroidDriver driver;
 
@@ -21,14 +20,15 @@ public class LoginTest {
     }
 
     @Test
-    public void loginTest() {
+    public void isPasswordShownTest() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage
-                .inputUsername("Login") //Chain of Invocations
                 .inputPassword("Password")  //Chain of Invocations
-                .clickConfirmButton();  //Chain of Invocations
-        SuccessLoginPage successLoginPage = new SuccessLoginPage(driver);
-        Assert.assertTrue(successLoginPage.isSuccessMessageShown());
+                .changePasswordState();
+        Assert.assertEquals(loginPage.isPasswordHidden(), "false");
+        loginPage
+                .changePasswordState();
+        Assert.assertEquals(loginPage.isPasswordHidden(), "true");
     }
 
     @AfterMethod

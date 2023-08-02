@@ -2,16 +2,16 @@ package tests.mobiletests;
 
 import driver.mobiledriver.AndroidDriverManager;
 import io.appium.java_client.android.AndroidDriver;
+import mobilePages.loginPage.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import mobilePages.loginPage.LoginPage;
-import mobilePages.successLoginPage.SuccessLoginPage;
 
 import java.net.MalformedURLException;
 
-public class LoginTest {
+public class LoginWithEmptyCredentialsTest {
 
     AndroidDriver driver;
 
@@ -20,15 +20,23 @@ public class LoginTest {
         driver = new AndroidDriverManager().createDriver();
     }
 
-    @Test
-    public void loginTest() {
+    @Test(dataProvider = "createEmptyData")
+    public void loginWithEmptyDataTest(String login, String password) {
         LoginPage loginPage = new LoginPage(driver);
         loginPage
-                .inputUsername("Login") //Chain of Invocations
-                .inputPassword("Password")  //Chain of Invocations
+                .inputUsername(login) //Chain of Invocations
+                .inputPassword(password)  //Chain of Invocations
                 .clickConfirmButton();  //Chain of Invocations
-        SuccessLoginPage successLoginPage = new SuccessLoginPage(driver);
-        Assert.assertTrue(successLoginPage.isSuccessMessageShown());
+        Assert.assertTrue(loginPage.isErrorMessageVisible());
+    }
+
+    @DataProvider(name = "createEmptyData")
+    private Object[][] getCreatedNegativeData() {
+        return new Object[][]{
+                {"", ""},
+                {"Login", ""},
+                {"", "Password"}
+        };
     }
 
     @AfterMethod
