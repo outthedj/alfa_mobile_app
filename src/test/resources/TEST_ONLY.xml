@@ -5,6 +5,10 @@
     <test name="Dashboard Tests">
         <classes>
             <class name="tests.mobiletests.LoginTest"/>
+            <class name="tests.mobiletests.IsPasswordShownTest"/>
+            <class name="tests.mobiletests.LoginWithEmptyCredentialsTest"/>
+            <class name="tests.mobiletests.LoginWithInvalidCredentialsTest"/>
+            <class name="tests.mobiletests.LoginWithWrongCredentialsTest"/>
         </classes>
     </test>
 

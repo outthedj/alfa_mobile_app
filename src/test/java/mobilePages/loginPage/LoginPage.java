@@ -17,15 +17,10 @@ import static mobilePages.loginPage.LoginFields.PASSWORD_FIELD;
 public class LoginPage {
 
     AndroidDriver driver;
-//    private By LOGIN_FIELD = By.id("com.alfabank.qapp:id/etUsername");
-//    private By LOGIN_FIELD = By.xpath("//*[contains(@resource-id, 'etUsername')]");
-//    private By PASSWORD_FIELD = By.id("com.alfabank.qapp:id/etPassword");
-//    private By PASSWORD_FIELD = By.xpath("//*[contains(@resource-id, 'etPassword')]");
-//    private By SUBMIT_BUTTON = By.id("com.alfabank.qapp:id/btnConfirm");
 
-//    String regexPattern = "android.widget.EditText";
-
-    //        WebDriverWait(driver, 10).until(expected_conditions.element_to_be_clickable((AppiumBy.ID, LOGIN_FIELD))).sendKeys('login');
+                           // Расскажу на собеседовании, что это
+//        String regexPattern = "android.widget.EditText";
+//
 //        List<WebElement> elements = driver.findElements(By.cssSelector("*[class*='" + regexPattern + "']"));
 //        List<WebElement> elements = driver.findElements(MobileBy.AndroidUIAutomator("new UiSelector().textMatches(\"" + regexPattern + "\")"));
 //        List<WebElement> elements = driver.findElements(By.xpath("//*[matches(@text, '" + regexPattern + "')]"));
@@ -41,21 +36,18 @@ public class LoginPage {
     public LoginPage inputUsername(String text) {
         log.info("Inputting username");
         new Input(driver, "etUsername").inputText(text); // Изпользуем обертку
-//        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions. visibilityOfElementLocated(LOGIN_FIELD.getFieldPath())).sendKeys("Login"); // Реализация без оберток
         return new LoginPage(driver); //Chain of Invocations
     }
 
     public LoginPage inputPassword(String text) {
         log.info("Inputting password");
         new Input(driver, "etPassword").inputText(text); // Изпользуем обертку
-//        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions. visibilityOfElementLocated(PASSWORD_FIELD.getFieldPath())).sendKeys("Password"); // Реализация без оберток
         return new LoginPage(driver); //Chain of Invocations
     }
 
     public LoginPage clickConfirmButton() {
         log.info("Clicking Confirm button");
         new Button(driver, "btnConfirm").clickButton(); // Изпользуем обертку
-//        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions. visibilityOfElementLocated(SUBMIT_BUTTON.getFieldPath())).click(); // Реализация без оберток
         return new LoginPage(driver); //Chain of Invocations
     }
 
@@ -77,19 +69,8 @@ public class LoginPage {
 
     public LoginPage isElementLoaded(By locator, String text) {
         log.info("Checking if element is loaded");
-//        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.textToBe(locator, text));
         return this;
     }
-
-//    public LoginPage loginToAccount() {
-//        new Input(driver, "etUsername").inputText("Login"); // Изпользуем обертку
-//        new Input(driver, "etPassword").inputText("Password"); // Изпользуем обертку
-//        new Button(driver, "btnConfirm").clickButton(); // Изпользуем обертку
-////        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions. visibilityOfElementLocated(LOGIN_FIELD.getFieldPath())).sendKeys("Login"); // Реализация без оберток
-////        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions. visibilityOfElementLocated(PASSWORD_FIELD.getFieldPath())).sendKeys("Password"); // Реализация без оберток
-////        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions. visibilityOfElementLocated(SUBMIT_BUTTON.getFieldPath())).click(); // Реализация без оберток
-//        return new LoginPage(driver); //Chain of Invocations
-//    }
 }

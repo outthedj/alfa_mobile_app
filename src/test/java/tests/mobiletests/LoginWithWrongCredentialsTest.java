@@ -24,7 +24,7 @@ public class LoginWithWrongCredentialsTest {
     }
 
     @Test(dataProvider = "createEmptyData")
-    public void loginWithInvalidDataTest(String login, String password) throws InterruptedException {
+    public void loginWithInvalidDataTest(String login, String password) {
         LoginPage loginPage = new LoginPage(driver);
         loginPage
                 .inputUsername(login) //Chain of Invocations
